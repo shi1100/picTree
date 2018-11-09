@@ -308,7 +308,7 @@
 			<div class="col-md-4">
 				<div class="panel panel-primary ">
 					<div class="panel-heading">
-						<h3 class="panel-title">电网树</h3>
+						<h3 class="panel-title">树</h3>
 					</div>
 					<div class="panel-body " style="height: 600px; overflow: auto;">
 						<input id="queryName" type="text"  class="form-control" />
@@ -319,7 +319,7 @@
 			<div class="col-md-8">
 				<div class="panel panel-primary ">
 					<div class="panel-heading">
-						<h3 class="panel-title">设备图片</h3>
+						<h3 class="panel-title">图片</h3>
 					</div>
 					<!--编辑操作权限 start-->
                 <div class="panel-body " style="height: 600px; overflow: auto;">
