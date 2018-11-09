@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jstl/picList/picList.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jstl/picList/picMain.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jstl/picList/picModal.jsp=UTF-8
+encoding//src/main/webapp/public/bootstrap=UTF-8
+encoding//src/main/webapp/public/bootstrap/fileinput.js=UTF-8
+encoding//src/main/webapp/public/bootstrap/fileinput_locale_zh.js=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8

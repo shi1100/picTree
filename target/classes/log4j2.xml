@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <!-- 控制台打印日志 -->
+        <Console name="consolePrint" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <!-- 将日志输出到指定文件 fileName属性值为日志文件地址-->
+        <File name="LogFile" fileName="D:\file.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+        </File>
+        <File name="SqlLogFile" fileName="D:\mybatis.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="consolePrint" />
+        </Root>
+
+        <!-- 配置mybatis打印sql 指定mapper所在包的全路径 -->
+        <logger name="com.zhangguo.ssmall.mapper" level="DEBUG" additivity="false">
+            <appender-ref ref="SqlLogFile" />
+        </logger>
+		<logger name="com.zhangguo.ssmall.controllers.PicListController" level="INFO" additivity="true">
+            <appender-ref ref="LogFile" />
+        </logger>
+
+    </Loggers>
+</Configuration>

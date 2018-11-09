@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.zhangguo.ssmall.mapper.PicDAO">
+	<!--获得商品信息并分页 -->
+	<select id="getPicList" resultType="com.zhangguo.ssmall.entities.PicTree">
+		select
+		id,code,name,pid from picTree where 1=1
+		<if test="code != null and code != ''">
+			and name like CONCAT('%','${code}','%') 
+		</if> 
+	</select>
+	
+	
+	<insert id="addNode" parameterType="com.zhangguo.ssmall.entities.PicTree">
+	    <selectKey resultType="java.lang.String" keyProperty="id"  order="AFTER">
+			select last_insert_id()
+		</selectKey>
+		insert into
+		picTree(name,pid) values(#{name,jdbcType=VARCHAR},#{pid,jdbcType=VARCHAR});
+	</insert>
+	
+	
+	<delete id="delNode" parameterType="com.zhangguo.ssmall.entities.PicTree">
+		delete from picTree where id = #{id}
+	</delete>
+	
+	
+	<delete id="delPic" >
+		delete from picurl where id in( ${ids} )
+	</delete>
+	
+	<insert id="savePicUrl" >
+	    <selectKey resultType="java.lang.String" keyProperty="id"  order="AFTER">
+			select last_insert_id()
+		</selectKey>
+		insert into
+		picurl(picid,path) values(#{id,jdbcType=VARCHAR},#{path,jdbcType=VARCHAR});
+	</insert>
+	
+	<select id="queryPicPath" resultType="com.zhangguo.ssmall.entities.PicUrl">
+		select
+		id,picid,path from picurl where picid=#{id}
+		<if test="text != null and text != ''">
+			and a.id = #{text} 
+		</if>
+	</select>
+	
+	<update id="updateNode" parameterType="com.zhangguo.ssmall.entities.PicTree">
+		update picTree set
+		name=#{name} where id=#{id}
+	</update>
+	
+	<select id="getPicListbyText" resultType="com.zhangguo.ssmall.entities.PicTree">
+		select
+		id,code,name,pid from picTree where 1=1
+		<if test="text != null and text != ''">
+			and name like CONCAT('%','${text}','%') 
+		</if> 
+	</select>
+	
+	<select id="getPicListbyPid" resultType="com.zhangguo.ssmall.entities.PicTree">
+		select
+		id,code,name,pid from picTree where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if> 
+	</select>
+	
+</mapper>
